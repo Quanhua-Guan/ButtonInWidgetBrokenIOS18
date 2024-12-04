@@ -52,17 +52,24 @@ struct WidgetExtEntryView : View {
             HStack {
                 // button can not be tapped
                 Button(intent: WidgetExtAppIntent(action: "+1")) {
-                    Image(systemName: "plus.square.fill").resizable()
-                        .widgetAccentedRenderingMode(.accentedDesaturated)
-                        .frame(width: 50, height: 50)
+                    VStack {
+                        Image(systemName: "plus.square.fill").resizable()
+                            .widgetAccentedRenderingMode(.accentedDesaturated) // <-- here
+                            .frame(width: 50, height: 50)
+                        Text("Broken")
+                    }
                 }.tint(.red)
                 // button can be tapped
                 Button(intent: WidgetExtAppIntent(action: "+1")) {
-                    Image(systemName: "plus.square.fill").resizable()
-                        .widgetAccentedRenderingMode(.fullColor) // diff
-                        .frame(width: 50, height: 50)
+                    VStack {
+                        Image(systemName: "plus.square.fill").resizable()
+                            .widgetAccentedRenderingMode(.fullColor) // <-- here
+                            .frame(width: 50, height: 50)
+                        Text("OK").frame(width: 50, alignment: .center)
+                    }
                 }.tint(.green)
             }
+            .minimumScaleFactor(0.5)
         }
     }
 }
